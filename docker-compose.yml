@@ -2,6 +2,7 @@ version: '3'
 services:
   haproxy:
     build: .
+    container_name: amazeeio-haproxy
     volumes:
       - ./haproxy.tmpl:/app/haproxy.tmpl
       - /var/run/docker.sock:/tmp/docker.sock
