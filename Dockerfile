@@ -15,4 +15,4 @@ WORKDIR /app/
 ENV DOCKER_HOST unix:///tmp/docker.sock
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
 CMD ["/app/haproxy_start.sh"]
-EXPOSE 80 443
+EXPOSE 8080 443
