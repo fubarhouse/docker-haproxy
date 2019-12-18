@@ -1,4 +1,4 @@
-# amazee.io haproxy
+# fubarhouse.io haproxy
 
 This Images is part of the [amazee.io local docker development environment](https://docs.amazee.io/local_docker_development/local_docker_development.html). It provides a haproxy that serves as an reverse proxy in front of multiple Containers. This allows us to access multiple containers via nice URLs without the need to publish or know the ports of the containers.
 
@@ -31,11 +31,11 @@ This container can not only be used for Containers started from amazee.io Docker
 
 Example:
 
-        docker run --rm -e AMAZEEIO_URL=nginx.docker.amazee.io -e AMAZEEIO=AMAZEEIO -e AMAZEEIO_HTTP_PORT=80 -p 80 nginx
+        docker run --rm -e AMAZEEIO_URL=nginx.docker.fubarhouse.io -e AMAZEEIO=AMAZEEIO -e AMAZEEIO_HTTP_PORT=80 -p 80 nginx
 
 ## Problem resolving
 
-The haproxy exposes it's status page on `/stats` (like: http://docker.amazee.io/stats if used with amazee.io). There you can see the containers, their ports and their URLs for which reverse proxy entries are made.
+The haproxy exposes it's status page on `/stats` (like: http://docker.fubarhouse.io/stats if used with amazee.io). There you can see the containers, their ports and their URLs for which reverse proxy entries are made.
 
 If something doesn't work at all, run `haproxy -f haproxy.cfg -d` within the running container (it should be running even if there is an haproxy error), this will start haproxy in debug mode and should show you possible errors.
 

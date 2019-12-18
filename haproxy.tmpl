@@ -42,7 +42,7 @@ frontend http
 {{/* We are only interested in containers that have the environment variable LAGOON_LOCALDEV_HTTP_PORT set */}}
 {{range $key, $container := whereExist $ "Env.LAGOON_LOCALDEV_HTTP_PORT" }}
   {{/* Allow containers to set their hostname via the env variable LAGOON_ROUTE if not set, fall back to the container name and projectname. Also remove http:// and https:// */}}
-  {{$host := replace (replace (coalesce $container.Env.LAGOON_LOCALDEV_URL $container.Env.LAGOON_ROUTE  (printf "%s.docker.amazee.io" $container.Name)) "http://" "" 1) "https://" "" 1 }}
+  {{$host := replace (replace (coalesce $container.Env.LAGOON_LOCALDEV_URL $container.Env.LAGOON_ROUTE  (printf "%s.docker.fubarhouse.io" $container.Name)) "http://" "" 1) "https://" "" 1 }}
   use_backend http_{{$host}} if { hdr_dom(host) -i {{$host}} }
 {{end}}
 
@@ -57,7 +57,7 @@ frontend https
 {{end}}
 {{range $key, $container := whereExist $ "Env.LAGOON_LOCALDEV_HTTP_PORT" }}
   {{/* Allow containers to set their hostname via the env variable LAGOON_ROUTE if not set, fall back to the container name and projectname. Also remove http:// and https:// */}}
-  {{$host := replace (replace (coalesce $container.Env.LAGOON_LOCALDEV_URL $container.Env.LAGOON_ROUTE  (printf "%s.docker.amazee.io" $container.Name)) "http://" "" 1) "https://" "" 1 }}
+  {{$host := replace (replace (coalesce $container.Env.LAGOON_LOCALDEV_URL $container.Env.LAGOON_ROUTE  (printf "%s.docker.fubarhouse.io" $container.Name)) "http://" "" 1) "https://" "" 1 }}
   use_backend http_{{$host}} if { hdr_dom(host) -i {{$host}} }
 {{end}}
 
@@ -72,7 +72,7 @@ backend http_{{$host}}
 {{end}}
 
 {{range $key, $container := whereExist $ "Env.LAGOON_LOCALDEV_HTTP_PORT" }}
-  {{$host := replace (replace (coalesce $container.Env.LAGOON_LOCALDEV_URL $container.Env.LAGOON_ROUTE  (printf "%s.docker.amazee.io" $container.Name)) "http://" "" 1) "https://" "" 1 }}
+  {{$host := replace (replace (coalesce $container.Env.LAGOON_LOCALDEV_URL $container.Env.LAGOON_ROUTE  (printf "%s.docker.fubarhouse.io" $container.Name)) "http://" "" 1) "https://" "" 1 }}
   {{/* Allow containers to set their the port for HTTP connections via LAGOON_LOCALDEV_HTTP_PORT env variable, fallback to Port 8080 */}}
   {{$http_port := coalesce $container.Env.LAGOON_LOCALDEV_HTTP_PORT "8080" }}
 backend http_{{$host}}
